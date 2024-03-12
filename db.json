@@ -73,6 +73,14 @@
       "lastname": "Rohit",
       "confirmpassword": "1234",
       "id": 9
+    },
+    {
+      "email": "indrajeetshanu1@gmail.com",
+      "password": "Shanu@123",
+      "name": "indrajeet",
+      "lastname": "gupta",
+      "confirmpassword": "Shanu@123",
+      "id": 10
     }
   ],
   "property": [

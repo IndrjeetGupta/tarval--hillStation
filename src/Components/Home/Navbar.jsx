@@ -10,7 +10,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  Popover, PopoverTrigger, PopoverContent,
+  Popover, PopoverTrigger, PopoverContent, Center, Heading,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -20,8 +20,13 @@ import {
 } from '@chakra-ui/icons';
 import { Link as ReactRouterLink } from 'react-router-dom'; // Import React Router's Link component
 import Logo from "./Images/Logo.jpg";
+import { useContext } from 'react';
+import { AuthContext } from "../../ContextApi/AuthcontextProvider";
 
 export default function Navbar() {
+  const{isLogged}=useContext(AuthContext)
+  const{logUser}=useContext(AuthContext);
+  const{logout}=useContext(AuthContext);
   const { isOpen, onToggle } = useDisclosure();
 
   const linkColor = useColorModeValue('white', 'gray.200');
@@ -33,7 +38,7 @@ export default function Navbar() {
       <Flex
         backgroundColor={useColorModeValue('rgb(124, 141, 211)', 'gray.800')}
         color={useColorModeValue('white', 'white')}
-        minH={'60px'}
+        h={'50px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
@@ -62,7 +67,7 @@ export default function Navbar() {
             color={useColorModeValue('gray.800', 'white')}
           >
             <ReactRouterLink to="/"> {/* Use React Router's Link component */}
-              <img src={Logo} alt="" />
+              <img style={{width:'130px'}}src={Logo} alt="" />
             </ReactRouterLink>
           </Text>
 
@@ -74,7 +79,8 @@ export default function Navbar() {
             />
           </Flex>
         </Flex>
-
+       {
+        !isLogged ? 
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
@@ -104,7 +110,33 @@ export default function Navbar() {
           >
            <ReactRouterLink to="/signup"> Sign Up</ReactRouterLink>
           </Button>
-        </Stack>
+        </Stack>: <Flex
+                as={'a'}
+        fontSize={'sm'}
+        fontWeight={600}
+        variant={'link'}
+        href={'#'}
+        color={"white"}
+        gap={'20px'}
+        alignContent={'center'}
+        textAlign={"center"}>
+          <Heading fontSize={'20px'}
+          mt={'10px'}
+          fontFamily={"popins"} color={'#1a1d2c'} >{logUser}</Heading>
+          <Button  display={{ base: 'none', md: 'inline-flex' }}
+            fontSize={'sm'}
+            fontWeight={600}
+            color={'white'}
+            bg={'pink.400'}
+            href={'#'}
+            _hover={{
+              bg: 'pink.300',
+            }}
+            onClick={logout}>
+            SignOut
+          </Button>
+        </Flex>
+       }
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -198,7 +230,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+    <Stack bg={useColorModeValue('#1a1d2c', 'gray.800')} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}

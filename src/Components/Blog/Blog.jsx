@@ -30,7 +30,7 @@ const Blog = () => {
     const[data,setData] = React.useState([]);
 
       const fetchData = async () => {
-        const res = await axios.get("https://database-aliu.onrender.com/blog");
+        const res = await axios.get("https://hillinandtravelingapi.onrender.com/blog");
         setData(res.data);
       };
     React.useEffect(()=>{
