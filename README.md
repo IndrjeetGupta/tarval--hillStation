@@ -41,3 +41,10 @@ As simple as you sign in to other website if you already sign in then no need to
 After you click on proceed to payment on cart page you will see a payment gateway where you have to enter your card detail like card no., cvv etc.
 <img src='./src/images/payment.png'>
 
+## 🚀Contributed by :- 
+🧑‍🦱 Indrajeet gupta
+🧑‍ Rohit Kumar
+👧 Bhartvir Kumar
+🧑‍🦱 Asif Wali
+🧑‍🦱 Saif Khan
+
